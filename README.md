@@ -1,4 +1,4 @@
-## Helldivers 2 Data Visualization
+## Helldivers 2 Player Career Data Visualization
 This is a basic data visualization of a single players 'Career' stats from the videogame Helldivers 2. The data is taken from the in game stats, and then visualized using Python and Jupyter Notebook.
 As of now we are only looking at a single players stats.
 
