@@ -2,11 +2,14 @@
 
 **Data Visualization is Live at the link below:**
 
-**[HD2-Career-Stats](https://hd2-career-stats.onrender.com)**
+**[HD2-Career-Stats - Will leave site](https://hd2-career-stats.onrender.com)**
+
+**Actual Player Data from CSV file**
 
 ![Site](./assets/combat-stats.png)
+
 --
-![Site](./assets/viz-exmp.png)
+![Site](./assets/site-viz.png)
 
 ## Technologies Used
 - Python
