@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, flash, redirect, url_for
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
@@ -7,10 +7,17 @@ import seaborn as sns
 import base64
 import io
 import os
+import secrets
 from typing import Dict, List, Tuple
 from dataclasses import dataclass
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-only')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16mb file size
+
+# uploads folder -> maybe for future use
+UPLOAD_FOLDER = 'uploads'
 
 @dataclass
 class EnemyKillStats:
