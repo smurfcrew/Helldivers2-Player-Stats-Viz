@@ -33,12 +33,36 @@ To run the Flask app, you need to have Python installed on your machine. You can
 or Anaconda distribution which includes Python and many useful libraries for data science.
 
 
+### Run Locally for Development
+
+
+from a command shell or terminal (assuming Git is installed), navigate to the project directory and run:
+make sure you are in the directory with the requirements.txt file
+
+```bash
+git pull # to get the lastest version of the code
+```
+
+```bash
+pip install -r requirements.txt 
+```
+
+### Make changes to the code to run locally
+in `app.py`, ensure the the following are commented out:
 ```python
-pip install -r requirements.txt
+app = Flask(__name__)
+#app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-only')
+#app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16mb file size
+```
+```python
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    # serve(app, host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0.', port=port, debug=True)  # Use debug=True for development
 ```
 
 ### Running the Flask App
-From the command shell or terminal, navigate to the project directory and run:
+from the same terminal, and directory, run the following command to start the Flask app:
 ```bash
 python app.py
 ```
