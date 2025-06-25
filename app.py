@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import base64
 import io
+import os
 from typing import Dict, List, Tuple
 from dataclasses import dataclass
 
@@ -264,4 +265,5 @@ def analyze():
         return render_template('error.html', error=str(e))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
