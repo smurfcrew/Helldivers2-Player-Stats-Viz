@@ -1,5 +1,26 @@
+# HD2 Career Stats
+
+**Data Visualization is Live at the link below:**
+
+**[HD2-Career-Stats](https://hd2-career-stats.onrender.com)**
+
+![Site](./assets/combat-stats.png)
+--
+![Site](./assets/viz-exmp.png)
+
+## Technologies Used
+- Python
+- Flask
+- Pandas
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
+- HTML
+-- 
+
 ## Helldivers 2 Player Career Data Visualization
 The project was originally a Data Visualization project using Python and Jupyter Notebook to analyze a single player's 'Career' stats from the videogame Helldivers 2. The data is taken from the in-game stats, and then visualized using Python and Jupyter Notebook.
+
 
 **Original Version located in the [Original Files](./Original-Files/) directory.**
 
@@ -31,4 +52,3 @@ pandas==2.0.3
 matplotlib==3.7.2
 seaborn==0.12.2
 ```
-
