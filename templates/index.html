@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center mb-4">Combat Stats Analysis</h1>
+        <p class="text-center text-muted">Enter your combat statistics manually or upload a CSV file...</p>
+    </div>
+</div>
+
+<form method="POST" action="/analyze">
+    <div class="row">
+        <!-- Mission Stats -->
+        <div class="col-md-6">
+            <div class="form-section">
+                <h4 class="text-primary mb-3">Mission Statistics</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="missions_played" class="form-label">Missions Played</label>
+                        <input type="number" class="form-control" id="missions_played" name="missions_played" min="0" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="missions_won" class="form-label">Missions Won</label>
+                        <input type="number" class="form-control" id="missions_won" name="missions_won" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="successful_extractions" class="form-label">Successful Extractions</label>
+                        <input type="number" class="form-control" id="successful_extractions" name="successful_extractions" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="objectives_completed" class="form-label">Objectives Completed</label>
+                        <input type="number" class="form-control" id="objectives_completed" name="objectives_completed" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kill Stats -->
+        <div class="col-md-6">
+            <div class="form-section">
+                <h4 class="text-danger mb-3">Kill Statistics</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="terminid_kills" class="form-label">Terminid Kills</label>
+                        <input type="number" class="form-control" id="terminid_kills" name="terminid_kills" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="automaton_kills" class="form-label">Automaton Kills</label>
+                        <input type="number" class="form-control" id="automaton_kills" name="automaton_kills" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="illuminate_kills" class="form-label">Illuminate Kills</label>
+                        <input type="number" class="form-control" id="illuminate_kills" name="illuminate_kills" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="friendly_kills" class="form-label">Friendly Kills</label>
+                        <input type="number" class="form-control" id="friendly_kills" name="friendly_kills" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Combat Style -->
+        <div class="col-md-6">
+            <div class="form-section">
+                <h4 class="text-success mb-3">Combat Style</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="grenade_kills" class="form-label">Grenade Kills</label>
+                        <input type="number" class="form-control" id="grenade_kills" name="grenade_kills" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="melee_kills" class="form-label">Melee Kills</label>
+                        <input type="number" class="form-control" id="melee_kills" name="melee_kills" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="eagle_kills" class="form-label">Eagle Kills</label>
+                        <input type="number" class="form-control" id="eagle_kills" name="eagle_kills" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="deaths" class="form-label">Deaths</label>
+                        <input type="number" class="form-control" id="deaths" name="deaths" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accuracy Stats -->
+        <div class="col-md-6">
+            <div class="form-section">
+                <h4 class="text-warning mb-3">Accuracy & Rewards</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="shots_fired" class="form-label">Shots Fired</label>
+                        <input type="number" class="form-control" id="shots_fired" name="shots_fired" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="shots_hit" class="form-label">Shots Hit</label>
+                        <input type="number" class="form-control" id="shots_hit" name="shots_hit" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="samples_collected" class="form-label">Samples Collected</label>
+                        <input type="number" class="form-control" id="samples_collected" name="samples_collected" min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="total_xp" class="form-label">Total XP Earned</label>
+                        <input type="number" class="form-control" id="total_xp" name="total_xp" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Stratagem Stats -->
+        <div class="col-12">
+            <div class="form-section">
+                <h4 class="text-info mb-3">Stratagem Usage</h4>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="total_stratagems" class="form-label">Total Stratagems Used</label>
+                        <input type="number" class="form-control" id="total_stratagems" name="total_stratagems" min="0">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="orbitals_used" class="form-label">Orbitals Used</label>
+                        <input type="number" class="form-control" id="orbitals_used" name="orbitals_used" min="0">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="defensive_stratagems" class="form-label">Defensive Stratagems</label>
+                        <input type="number" class="form-control" id="defensive_stratagems" name="defensive_stratagems" min="0">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="eagles_used" class="form-label">Eagles Used</label>
+                        <input type="number" class="form-control" id="eagles_used" name="eagles_used" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary btn-lg px-5">Generate Analysis</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

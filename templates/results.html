@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results - Combat Stats Analyzer{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center mb-4">Your Combat Analysis Results</h1>
+        <div class="text-center mb-4">
+            <a href="/" class="btn btn-secondary">Analyze New Stats</a>
+        </div>
+    </div>
+</div>
+
+<!-- Summary Stats Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="stats-card text-center">
+            <h5 class="text-primary">Total Kills</h5>
+            <h3>{{ "{:,}".format(stats.total_kills) }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card text-center">
+            <h5 class="text-success">Success Rate</h5>
+            <h3>{{ "%.1f"|format(stats.mission_success_rate) }}%</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card text-center">
+            <h5 class="text-warning">Samples/Mission</h5>
+            <h3>{{ "%.1f"|format(stats.samples_per_mission) }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card text-center">
+            <h5 class="text-info">XP/Mission</h5>
+            <h3>{{ "{:,.0f}".format(stats.xp_per_mission) }}</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Visualizations -->
+{% for image in images %}
+<div class="chart-container">
+    <img src="data:image/png;base64,{{ image }}" alt="Combat Stats Chart" class="img-fluid" style="max-width: 100%; height: auto;">
+</div>
+{% endfor %}
+
+<!-- Detailed Stats Table -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="form-section">
+            <h4 class="mb-3">Detailed Performance Metrics</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for metric, value in stats.efficiency_metrics.items() %}
+                        <tr>
+                            <td>{{ metric }}</td>
+                            <td>
+                                {% if metric == "Accuracy(%)" %}
+                                    {{ "%.1f"|format(value) }}%
+                                {% elif "XP" in metric %}
+                                    {{ "{:,.0f}".format(value) }}
+                                {% else %}
+                                    {{ "%.2f"|format(value) }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
