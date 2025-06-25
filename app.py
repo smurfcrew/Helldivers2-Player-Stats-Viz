@@ -7,7 +7,7 @@ import seaborn as sns
 import base64
 import io
 import os
-import secrets
+# import secrets
 from typing import Dict, List, Tuple
 from dataclasses import dataclass
 from werkzeug.utils import secure_filename
@@ -274,4 +274,4 @@ def analyze():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    serve(app, host='0.0.0.0', port=port)
